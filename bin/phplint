@@ -1,0 +1,13 @@
+#!/bin/bash
+
+syntax_errors=$(find $1 -name "*.php" -not -path ".*/vendor/*" -exec php -n -l {} \; | egrep -v "^No syntax errors")
+
+count_syntax_errors=$(echo $syntax_errors | egrep -c "Errors parsing")
+
+if [ $count_syntax_errors -eq 0 ]
+ then
+    exit 0
+else
+    echo $syntax_errors
+    exit 1
+fi
