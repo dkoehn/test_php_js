@@ -9,7 +9,7 @@ pipeline {
                 }
             }
             steps {
-                sh 'yarn install'
+                sh 'export HOME=/home/node yarn install'
             }
         }
         stage('Build PHP') {
