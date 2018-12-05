@@ -3,7 +3,10 @@ pipeline {
     stages {
         stage('Build JS') {
             agent {
-                docker { image 'node:7-alpine' }
+                docker {
+                    image 'node:7-alpine'
+                    args '-e HOME=/home/node'
+                }
             }
             steps {
                 sh 'yarn install'
@@ -19,7 +22,10 @@ pipeline {
         }
         stage('Test') {
             agent {
-                docker { image 'node:7-alpine' }
+                docker {
+                    image 'node:7-alpine'
+                    args '-e HOME=/home/node'
+                }
             }
             steps {
                 sh 'node --version'
