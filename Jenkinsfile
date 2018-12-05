@@ -1,15 +1,20 @@
 pipeline {
     agent none
+    environment {
+        CI = 'true'
+    }
     stages {
         stage('Build JS') {
             agent {
                 docker {
                     image 'node:7-alpine'
-                    args '-e HOME=/home/node'
                 }
             }
+            environment {
+                HOME = '/home/node'
+            }
             steps {
-                sh 'export HOME=/home/node yarn install'
+                sh 'yarn install'
             }
         }
         stage('Build PHP') {
