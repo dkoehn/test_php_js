@@ -4,5 +4,6 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
+    "postinstall": "cd js && yarn install"
   }
 }
