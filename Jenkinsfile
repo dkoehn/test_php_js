@@ -8,6 +8,7 @@ pipeline {
             agent {
                 docker {
                     image 'node:7-alpine'
+                    args '-u node'
                 }
             }
             environment {
@@ -29,7 +30,7 @@ pipeline {
             agent {
                 docker {
                     image 'node:7-alpine'
-                    args '-e HOME=/home/node'
+                    args '-u node'
                 }
             }
             steps {
