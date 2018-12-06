@@ -17,9 +17,7 @@ pipeline {
         }
         stage('Build JS') {
             agent {
-                docker {
-                    image 'node:7-alpine'
-                }
+                dockerfile true
             }
             environment {
                 HOME = '/home/node'
@@ -30,10 +28,7 @@ pipeline {
         }
         stage('Test') {
             agent {
-                docker {
-                    image 'node:7-alpine'
-                    args '-u root'
-                }
+                dockerfile true
             }
             steps {
                 sh 'node --version'
