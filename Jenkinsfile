@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Build PHP') {
             agent {
-                docker { image 'php:7-cli' }
+                dockerfile true
             }
             steps {
                 sh 'bin/phplint'
