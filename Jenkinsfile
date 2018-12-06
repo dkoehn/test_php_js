@@ -1,24 +1,20 @@
 #!groovy
 
 pipeline {
-    agent none
+    agent {
+        dockerfile true
+    }
     environment {
         CI = 'true'
     }
     stages {
         stage('Build PHP') {
-            agent {
-                dockerfile true
-            }
             steps {
                 sh 'bin/phplint'
                 sh 'bin/composer.phar install'
             }
         }
         stage('Build JS') {
-            agent {
-                dockerfile true
-            }
             environment {
                 HOME = '/home/node'
             }
@@ -27,9 +23,6 @@ pipeline {
             }
         }
         stage('Test') {
-            agent {
-                dockerfile true
-            }
             steps {
                 sh 'node --version'
             }
