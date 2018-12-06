@@ -4,6 +4,7 @@ pipeline {
     agent {
         docker {
             image 'churchcommunitybuilder/ccb_nodejs_php:18.3'
+            registryUrl 'https://registry.hub.docker.com/'
             registryCredentialsId 'dockerHubId'
         }
     }
