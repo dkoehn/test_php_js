@@ -2,7 +2,10 @@
 
 pipeline {
     agent {
-        dockerfile true
+        dockerfile {
+            image 'churchcommunitybuilder/ccb_nodejs_php:18.3'
+            registryCredentialsId 'dockerHubId'
+        }
     }
     environment {
         CI = 'true'
