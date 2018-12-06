@@ -1,7 +1,7 @@
 FROM php:7-cli
 
 RUN apt-get update && apt-get upgrade -y \
-    && apt-get install -y git unzip
+    && apt-get install -y git unzip gnupg --no-install-recommends
 
 RUN groupadd --gid 1000 node \
   && useradd --uid 1000 --gid node --shell /bin/bash --create-home node
